@@ -7,4 +7,4 @@
 
 2. To Start the server
 
-```npx parcel index.html```
+```npm run start```
