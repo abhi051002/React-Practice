@@ -1,0 +1,24 @@
+{
+  "name": "react-practice",
+  "version": "1.0.0",
+  "description": "", 
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhi051002/React-Practice"
+  },
+  "keywords": [],
+  "author": "Abhijit Nanda",
+  "license": "ISC",
+  "homepage": "https://github.com/abhi051002/React-Practice#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
