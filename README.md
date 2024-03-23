@@ -8,3 +8,23 @@
 2. To Start the server
 
 ```npm run start```
+
+
+/*
+**
+**Header
+    -Logo
+    -Navbar
+**Body
+    -Search
+    -RestaurantContainer
+        -RestaurantCard
+            -logo
+            -Name of restaurant,Rating,cusines,delivery time etc...
+**Footer
+    -Copyright
+    -Links
+    -Address
+    -Contact
+**
+*/
