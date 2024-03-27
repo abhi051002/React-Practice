@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import RestaurantInfo from "./RestaurantInfo";
+import { CDN_URL } from "../Constant/constant";
 
 const RestaurantCard = (props) => {
   const { data } = props;
-  const { name, img, stars, priceforTwo, deliveryTime, cusines, address } =
-    data;
+  const {
+    cloudinaryImageId,
+    name,
+    avgRating,
+    cuisines,
+    costForTwo,
+    sla,
+    areaName,
+    locality
+  } = data?.info;
+
+  console.log(costForTwo);
   const [showInfo, setShowInfo] = useState(false);
 
   return (
@@ -13,15 +23,18 @@ const RestaurantCard = (props) => {
       onMouseEnter={() => setShowInfo(true)}
       onMouseLeave={() => setShowInfo(false)}
     >
-      <img src={img} alt={name} className="res-logo" />
+      <img
+        className="res-logo"
+        alt="res-logo"
+        src={CDN_URL + cloudinaryImageId}
+      />
       <h3 className="res-name">{name}</h3>
       <h4 className="rating">
-        <i className="fa-regular fa-star"></i> {stars} . {deliveryTime} mins
+        <i className="fa-regular fa-star"></i>{avgRating} . {sla.slaString}
       </h4>
-      <h4 className="cusines">₹ {priceforTwo / 100} for Two</h4>
-      <h4 className="cusines">{cusines.join(" , ")}</h4>
-      <h4 className="res-address">{address}</h4>
-      {showInfo && <RestaurantInfo />}
+      <h4 className="cusines">{costForTwo }</h4>
+      <h4 className="cusines">{cuisines.join(", ")}</h4>
+      <h4 className="res-address">{locality},{areaName}</h4>
     </div>
   );
 };
