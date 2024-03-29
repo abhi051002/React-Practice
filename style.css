@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -11,7 +5,7 @@
   align-items: center;
 }
 
-.logo-container > img {
+.logo {
   width: 15vmin;
   height: 15vmin;
   border-radius: 12px;
@@ -43,7 +37,7 @@
 
 .res-card {
   width: 29vmin;
-  height: 45vmin;
+  height: 50vmin;
   margin: 10px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
   background: #f0f0f0;
@@ -54,10 +48,6 @@
   flex-wrap: wrap;
 }
 
-.expanded {
-  /* transition: padding 0.5s ease-in; */
-  padding: 10px;
-}
 .res-card:hover {
   border: 1px solid black;
 }
@@ -118,7 +108,7 @@
   position: relative;
 }
 .search-input {
-  width: 80%;
+  width: 70%;
   padding: 10px 10px;
   padding-right: 30px;
   border-radius: 5px;
@@ -138,7 +128,7 @@
 
 .clear {
   position: absolute;
-  right: 110px; /* Adjust the position of the icon */
+  right: 115px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -169,4 +159,93 @@
   100% {
     background-position: 800px 0;
   }
+}
+
+.about{
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  margin: 2vmin 26vmin;
+}
+.about-heading{
+  text-align: center;
+  font-size: 5vmin;
+}
+
+.about-paragraph{
+  text-align: center;
+  margin: 2vmin 0;
+  font-size: 3vmin;
+}
+
+.contact-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-heading{
+  font-size: 5vmin;
+}
+
+.contact-page input,.message{
+  width: 60vmin;
+  padding: 2vmin;
+  margin: 2vmin;
+  font-size: 2vmin;
+  border-radius: 1vmin;
+  border: 1px solid black;
+  outline: none;
+}
+
+.message{
+  resize: none;
+}
+
+.submit-btn{
+  width: 60vmin;
+  padding: 2vmin;
+  margin: 2vmin;
+  font-size: 2vmin;
+  border-radius: 1vmin;
+  border: 1px solid black;
+  outline: none;
+  background-color: #d8d7d7;
+  cursor: pointer;
+}
+
+.submit-btn:hover{
+  background-color: #c0c0c0;
+}
+
+.error-page{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error-status{
+  font-size: 8vmin;
+  color: rgb(230, 57, 57);
+}
+
+.error-text{
+  font-size: 6vmin;
+}
+
+.error-message{
+  margin: 2vmin 0;
+  font-size: 3vmin;
+  color: #787878;
+}
+
+a{
+  text-decoration: none;
+  color: black;
 }

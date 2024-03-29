@@ -13,8 +13,6 @@ const RestaurantCard = (props) => {
     areaName,
     locality
   } = data?.info;
-
-  console.log(costForTwo);
   const [showInfo, setShowInfo] = useState(false);
 
   return (
