@@ -5,9 +5,6 @@ const Header = () => {
   // let btnName= 'Login';
   const [btnName, setbtnName] = useState("Login");
 
-  useEffect(() => {
-    console.log("useEffect Called");
-  }, [btnName]);
   return (
     <div className="header">
       <div className="logo-container">

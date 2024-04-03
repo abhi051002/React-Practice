@@ -1,10 +1,24 @@
-const About = () => {
-  return (
-    <div className="about">
-      <h1 className="about-heading">About US</h1>
-      <p className="about-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ea modi magnam! Aut minima soluta deleniti voluptate maxime explicabo expedita eligendi iure blanditiis optio natus incidunt, facere doloremque corrupti nostrum neque? Aspernatur exercitationem magnam dolorem.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde enim mollitia veritatis necessitatibus eaque velit saepe. Nostrum odit aut molestiae, quas explicabo vel nemo inventore quaerat, nobis laborum ullam fugit perspiciatis itaque facilis nisi cupiditate sapiente autem repellat, quia optio consectetur veniam quos voluptates? Ut beatae rerum culpa repellendus sapiente, hic modi optio velit consequuntur libero minima doloremque harum eaque esse nobis cum, quos, porro explicabo veritatis nihil eveniet! Quae suscipit, praesentium saepe molestias obcaecati eligendi nostrum, aperiam cum perferendis ad laudantium similique error officia facilis itaque voluptates. Ab placeat quos consequatur, dolorem, explicabo nam molestias maxime inventore tempore laboriosam quam fuga omnis? Magnam eveniet vel asperiores odio iste optio aut omnis aliquam, earum ex facilis temporibus unde dolore et laborum distinctio ea atque in tenetur! Numquam assumenda eveniet accusamus, quis porro temporibus asperiores mollitia eos quaerat facilis deleniti consectetur quae minima minus quisquam unde reiciendis. Voluptatum autem vero velit, ea, nesciunt unde minus tempore ut aliquam perferendis ipsum non recusandae placeat odio repudiandae. Eaque doloribus, deserunt quis cupiditate inventore saepe ad commodi recusandae dicta atque laborum nihil delectus tempora amet corporis vero placeat nam sapiente, beatae dolorum voluptates nemo accusamus! Aperiam ipsa voluptatem esse cupiditate delectus illo vero temporibus! Laudantium eum itaque ex? Quibusdam temporibus exercitationem cupiditate? Beatae voluptatem qui soluta eius atque hic eligendi cum sunt laudantium pariatur sequi quas, accusamus omnis quae nihil quidem illum optio! Mollitia sunt ad cumque in id cum voluptatem, facere debitis voluptatum nostrum assumenda harum maiores saepe quam, exercitationem autem iusto quia expedita. Mollitia adipisci dolor ab.</p>
-    </div>
-  );
-};
+import AboutClass from "./AboutClass";
+import { Component } from "react";
+
+class About extends Component {
+  constructor(props){
+    super(props);
+    // console.log('Parent Constuctor');
+  }
+
+  componentDidMount(){
+    // console.log('Parent Componet Did Mount');
+  }
+
+  render() {
+    // console.log('Parent Render');
+    return (
+      <div>
+        <AboutClass name={"First (Class)"} location={"Odisha"} />
+      </div>
+    );
+  }
+}
 
 export default About;

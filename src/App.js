@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantsMenu from "./components/RestaurantsMenu";
+import AboutClass from "./components/AboutClass";
 
 const AppLayout = () => {
   return (
