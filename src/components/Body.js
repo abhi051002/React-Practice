@@ -2,25 +2,17 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useRestaurantCards from "../Constant/useRestaurantCards";
+import useOnlineStatus from "../Constant/useOnlineStatus";
 
 const Body = () => {
-  const [list, setList] = useState([]);
-  const [filteredList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(()=>{
-    fetchApi();
-  },[]);
+  const { list, filteredList } = useRestaurantCards();
 
-  const fetchApi = async () =>{
-    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.2960587&lng=85.8245398&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
-    const json = await data.json();
+  const onlineStatus = useOnlineStatus();
 
-    // console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-    setList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
-  }
+  if (onlineStatus === false) return <h1>Oops Looks like you are offline</h1>;
   return (
     <div className="body">
       <div className="search">
@@ -79,9 +71,15 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurants-container">
-        {list.length === 0 ? <Shimmer /> : filteredList.map((restaurant) => (
-          <Link to={"/restaurants/"+restaurant.info.id}><RestaurantCard key={restaurant.info.id} data={restaurant} /></Link>
-        ))}
+        {list.length === 0 ? (
+          <Shimmer />
+        ) : (
+          filteredList.map((restaurant) => (
+            <Link to={"/restaurants/" + restaurant.info.id}>
+              <RestaurantCard key={restaurant.info.id} data={restaurant} />
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );
