@@ -11,7 +11,7 @@ const RestaurantCard = (props) => {
     costForTwo,
     sla,
     areaName,
-    locality
+    locality,
   } = data?.info;
   const [showInfo, setShowInfo] = useState(false);
 
@@ -28,13 +28,27 @@ const RestaurantCard = (props) => {
       />
       <div className="res-name">{name}</div>
       <div className="rating">
-        <i className="fa-regular fa-star"></i>{avgRating} . {sla.slaString}
+        <i className="fa-regular fa-star"></i>
+        {avgRating} . {sla.slaString}
       </div>
-      <div className="cusines">{costForTwo }</div>
+      <div className="cusines">{costForTwo}</div>
       <div className="cusines">{cuisines.join(", ")}</div>
-      <div className="res-address">{locality},{areaName}</div>
+      <div className="res-address">
+        {locality},{areaName}
+      </div>
     </div>
   );
+};
+
+export const withPromotedLabel = () => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute p-2 ml-7 rounded-md bg-green-500 text-white">Opened</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

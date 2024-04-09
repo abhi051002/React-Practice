@@ -1,155 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid black;
-  align-items: center;
+  @apply flex justify-between border-[1px] shadow-lg items-center;
 }
 
 .logo {
-  width: 15vmin;
-  height: 15vmin;
-  border-radius: 12px;
-  cursor: pointer;
+  @apply w-40 h-40 rounded-[12px] cursor-pointer;
 }
 
 .nav-items > ul {
-  display: flex;
-  list-style: none;
+  @apply flex ;
 }
 
 .nav-items > ul > li {
-  margin: 10px 20px;
-  padding: 10px;
-  font-size: 24px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.body {
-  width: 100%;
-  height: 50vw;
+  @apply mx-[10px] my-[20px] p-6 text-xl cursor-pointer font-extrabold;
 }
 
 .restaurants-container {
-  display: flex;
-  flex-wrap: wrap;
+  @apply flex flex-wrap;
 }
 
 .res-card {
-  width: 29vmin;
-  height: 45vmin;
-  margin: 10px;
+  @apply w-[29vmin] h-[40vmin] m-2 bg-[#f0f0f0] rounded-3xl ml-[3vmin];
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
-  background: #f0f0f0;
-  cursor: pointer;
-  border-radius: 20px;
-  margin-left: 3vmin;
 }
 
 .res-card:hover {
-  border: 1px solid black;
+  @apply border-[1px] border-solid border-black;
 }
 
 .res-logo {
-  width: 100%;
-  height: 25vmin;
-  border-radius: 20px;
+  @apply w-full h-[25vmin] rounded-2xl;
 }
 
 .res-name {
-  font-size: 28px;
-  font-weight: 600;
-  margin-left: 1vmin;
+  @apply text-xl font-semibold ml-[1vmin] truncate;
 }
 
 .rating {
-  font-size: 18px;
-  font-weight: 600;
-  margin-left: 1vmin;
+  @apply text-sm ml-[1vmin];
 }
 
 .cusines,
 .res-address {
-  color: #787878;
-  margin-left: 1vmin;
-  font-weight: 300;
+  @apply text-[#787878] ml-[1vmin] truncate;
 }
 
 .restaurant-info {
-  text-align: center;
+  @apply text-center;
 }
 
 .filter-btn {
-  margin-left: 4vmin;
-  margin-top: 2vmin;
-  padding: 10px;
+  @apply ml-[4vmin] mt-[2vmin] p-2 border-black border-[1px] border-solid rounded-md;
+}
+
+.filter-btn:hover{
+  @apply bg-[#e7e7e7];
 }
 
 .login {
-  padding: 0 20px;
-  margin: 0 10px;
-  cursor: pointer;
+  @apply cursor-pointer mx-2 border-black border-[1px] border-solid rounded-md w-16 h-16 my-6 font-semibold;
 }
 .search {
-  padding: 10px;
-  width: 50vmin;
-  margin-left: 2.5vmin;
-  margin-top: 2vmin;
-  margin-bottom: 1vmin;
-  position: relative;
+  @apply relative mt-[2vmin] ml-[2.5vmin] mb-[1vmin] w-full p-2;
 }
 .search-input {
-  width: 70%;
-  padding: 10px 10px;
-  padding-right: 30px;
-  border-radius: 5px;
-  outline: none;
-  border: 1px solid black;
+  @apply w-[30%] p-2 pr-6 rounded-md outline-none border-black border-[1px] border-solid;
 }
 
 .search-btn {
-  width: 18%;
-  margin-left: 5px;
-  padding: 10px 10px;
-  border-radius: 5px;
-  border: 1px solid black;
-  cursor: pointer;
-  outline: none;
+  @apply w-[5%] ml-1 p-2 rounded-md border-solid border-[1px] border-black cursor-pointer outline-none truncate;
 }
 
 .clear {
-  position: absolute;
-  right: 115px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #787878;
+  @apply relative  cursor-pointer text-[#787878] right-6;
 }
 .shimmer-container {
-  display: flex;
-  flex-wrap: wrap;
+  @apply flex flex-wrap;
 }
 .shimmer-card {
-  /* background-color: #f0f0f0; */
-  width: 29vmin;
-  height: 45vmin;
-  margin: 10px;
-  border-radius: 20px;
-  margin-left: 3vmin;
+  @apply w-[29vmin] h-[45vmin] m-[10px] rounded-2xl ml-[3vmin] relative overflow-hidden animate-pulse;
   background: linear-gradient(to right, #dddddd 8%, #e1e1e1 18%, #e3e4e6 33%);
   background-size: 800px 104px;
-  position: relative;
-  overflow: hidden;
-  animation: shimmer 1.5s infinite linear;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -800px 0;
-  }
-  100% {
-    background-position: 800px 0;
-  }
 }
 
 .about{

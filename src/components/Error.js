@@ -8,7 +8,7 @@ const Error =()=>{
         <div className="error-page">
             <h1 className="error-status">{err.status}</h1>
             <h1 className="error-text">{err.statusText}</h1>
-            <h2 className="error-message">{err.error.message}</h2>
+            <h2 className="error-message">{err.error}</h2>
         </div>
     )
 }

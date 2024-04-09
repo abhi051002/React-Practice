@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -7,11 +7,27 @@ import useOnlineStatus from "../Constant/useOnlineStatus";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-
-  const { list, filteredList } = useRestaurantCards();
-
+  const [list, setList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+  useEffect(() => {
+    fetchApi();
+  }, []);
+  console.log(list);
+  const RestaurantCardWithPromoted = withPromotedLabel(RestaurantCard);
+  const fetchApi = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.2960587&lng=85.8245398&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    setList(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredList(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
   const onlineStatus = useOnlineStatus();
-
+  // promoted
   if (onlineStatus === false) return <h1>Oops Looks like you are offline</h1>;
   return (
     <div className="body">
@@ -51,8 +67,6 @@ const Body = () => {
         >
           Search
         </button>
-      </div>
-      <div className="filters">
         <button
           className="filter-btn"
           onClick={() => {
@@ -76,7 +90,11 @@ const Body = () => {
         ) : (
           filteredList.map((restaurant) => (
             <Link to={"/restaurants/" + restaurant.info.id}>
-              <RestaurantCard key={restaurant.info.id} data={restaurant} />
+              {restaurant.info.isOpen ? (
+                <RestaurantCardWithPromoted data={restaurant} />
+              ) : (
+                <RestaurantCard key={restaurant.info.id} data={restaurant} />
+              )}
             </Link>
           ))
         )}
