@@ -7,17 +7,20 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import AboutClass from "./components/AboutClass";
+import UserContext from "./Constant/UserContext";
 
-const Grocery = lazy(()=>import("./components/Grocery"));
-const About = lazy(()=>import("./components/About"));
+const Grocery = lazy(() => import("./components/Grocery"));
+const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
-
+  const [showName, setShowName] = useState("Abhijit");
   return (
-    <div className="app">
-      <Header />
-      <Outlet/>
-    </div>
+    <UserContext.Provider value={{ loggedUser: showName , setShowName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
@@ -27,16 +30,24 @@ const appRoute = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
-        path:"/",
-        element:<Body />
+        path: "/",
+        element: <Body />,
       },
       {
         path: "about",
-        element: <Suspense fallback="<h1>loading....</h1>"><About /></Suspense>,
+        element: (
+          <Suspense fallback="<h1>loading....</h1>">
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "grocery",
-        element: <Suspense fallback="<h1>loading....</h1>"><Grocery /></Suspense>,
+        element: (
+          <Suspense fallback="<h1>loading....</h1>">
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "contact",

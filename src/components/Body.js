@@ -1,9 +1,10 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useRestaurantCards from "../Constant/useRestaurantCards";
 import useOnlineStatus from "../Constant/useOnlineStatus";
+import UserContext from "../Constant/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -12,7 +13,8 @@ const Body = () => {
   useEffect(() => {
     fetchApi();
   }, []);
-  console.log(list);
+
+  const { setShowName, loggedUser } = useContext(UserContext);
   const RestaurantCardWithPromoted = withPromotedLabel(RestaurantCard);
   const fetchApi = async () => {
     const data = await fetch(
@@ -83,7 +85,15 @@ const Body = () => {
         >
           All
         </button>
+        <label className="mx-4">UserName:</label>
+        <input
+          type="text"
+          className="search-input"
+          value={loggedUser}
+          onChange={(e) => setShowName(e.target.value)}
+        />
       </div>
+      <div></div>
       <div className="restaurants-container">
         {list.length === 0 ? (
           <Shimmer />
@@ -91,7 +101,10 @@ const Body = () => {
           filteredList.map((restaurant) => (
             <Link to={"/restaurants/" + restaurant.info.id}>
               {restaurant.info.isOpen ? (
-                <RestaurantCardWithPromoted data={restaurant} />
+                <RestaurantCardWithPromoted
+                  key={restaurant.info.id}
+                  data={restaurant}
+                />
               ) : (
                 <RestaurantCard key={restaurant.info.id} data={restaurant} />
               )}
