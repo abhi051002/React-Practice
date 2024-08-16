@@ -28,3 +28,13 @@
     -Contact
 **
 */
+
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect Store to our app
+- Slice (cartSlice)
+- dispatch (Action)
+- selector
